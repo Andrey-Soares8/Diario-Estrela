@@ -1,0 +1,243 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2d 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+#background-stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: all;
+}
+
+
+.content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.estrela {
+    position: fixed;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 2;
+}
+
+
+.estrela:hover {
+    transform: scale(2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+}
+
+h1 {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#entrada {
+    width: 100%;
+    height: 60px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(45, 45, 45, 0.1);
+    color: white;
+    font-size: 16px;
+    resize: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 100;
+}
+
+#entrada::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#entrada:focus {
+    outline: none;
+    border-color: rgba(74, 144, 226, 0.5);
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.2);
+    transform: translateY(-2px);
+    background-color: rgba(45, 45, 45, 0.2);
+}
+
+button {
+    padding: 12px 30px;
+    background: rgba(74, 144, 226, 0.3);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 100;
+}
+
+button:hover {
+    background: rgba(74, 144, 226, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Removendo a seção antiga do céu */
+#ceu {
+    display: none;
+}
+
+/* Mantendo a responsividade */
+@media (max-width: 480px) {
+    .content {
+        width: 85%;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    #entrada {
+        height: 50px;
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    button {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+}
+
+.tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    max-width: 200px;
+    word-wrap: break-word;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.estrela-sentimento {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Responsividade para estrelas */
+@media (max-width: 600px) {
+    .estrela-cadente, .falling-star {
+        width: 2px;
+        height: 2px;
+    }
+
+    .estrela-cadente::before, .falling-star::before {
+        width: 75px;
+        height: 1px;
+    }
+}
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.modal p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+select#humor {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 16px;
+}
+
+#total-sentimentos {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto com 50% de transparência */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    pointer-events: none; /* Permitir cliques através do elemento */
+}
+
+#total-sentimentos span {
+    pointer-events: auto; /* Permitir interação com o texto */
+}

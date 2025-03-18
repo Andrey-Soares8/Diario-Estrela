@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário Estrelado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <!-- Fundo de estrelas -->
+    <div id="background-stars"></div>
+    
+    <!-- Conteúdo principal -->
+    <div class="content">
+        <textarea id="entrada" placeholder="Escreva sobre seus sentimentos..." aria-label="Entrada de sentimentos"></textarea>
+        <button onclick="adicionarEntrada()">Adicionar Sentimento</button>
+
+        
+    </div>
+    
+    <!-- Modal para exibir mensagens -->
+    <div id="modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <button class="modal-close" onclick="fecharModal()" aria-label="Fechar modal">×</button>
+        <h1 id="modal-title">Mensagem</h1>
+        <p id="modal-texto"></p>
+        <p id="modal-data"></p>
+        <p id="modal-hora"></p>
+    </div>
+    
+    
+    <script src="script.js"></script>
+    
+</body>
+</html>
